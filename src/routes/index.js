@@ -2,6 +2,7 @@ import express from 'express';
 import config from '../config';
 import middleware from '../middleware';
 import initializeDb from '../db';
+import post from '../controller/post';
 
 let router = express();
 
@@ -12,6 +13,7 @@ initializeDb(db => {
   router.use(middleware({config, db}));
 
   // api routes v1
+  router.use('/post', post({config, db}));
 
 });
 
